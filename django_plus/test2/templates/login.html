@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function script_test(){
+            location.href="/login/?uname=张三&pwd=123456";
+
+        }
+    </script>
+
+</head>
+<body>
+<!--
+    method="post"   显示文件
+    &nbsp   space
+    &emsp;   tab     分号;
+-->
+    <form action="/login/" method="get">
+        <p>
+            用户名：<input type="text" name="uname">
+        </p>
+        <p>
+            密&emsp;码：<input type="password" name="pwd">
+        </p>
+        <p>
+            <input type="submit" value="登录">
+        </p>
+        <a href="/login/?uname=张三&pwd=123456">
+            超链接
+        </a>
+        <br>
+        <input type="button" value="script_test" onclick="script_test()">
+
+    </form>
+
+</body>
+</html>
