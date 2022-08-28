@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table border="1" cellpadding="0" width="300px">
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>班级</th>
+        <th>课程</th>
+    </tr>
+    {% for stu in stulist %}
+        <tr>
+            <td>{{ stu.sno }}</td>
+            <td>{{ stu.sname }}</td>
+            <td>{{ stu.cls.cname }}</td>
+            <td>
+                {% for cour in stu.course.all %}
+                    {{ cour.coursename }}
+                {% endfor %}
+
+            </td>
+        </tr>
+    {% endfor %}
+    
+</table>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{#过滤器#}
+{#数字加减#}
+{{ num|add:8 }}
+{#首字母大写#}
+{{ str|capfirst }}
+{#显示前两个单词#}
+{{ str|truncatechars:2 }}
+{#全小写#}
+{{ str1|slugify }}
+{#判断值是否有效#}
+{{ m|default:'无法接收' }}
+{#整除#}
+{{ num|divisibleby:3 }}
+{#列表第一个值#}
+{{ li|first }}
+{#取消自动转义#}
+{{ sc|safe }}
+
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <table border="3" cellpadding="5" width="200px">
+        <tr >
+            <th>编号</th>
+            <th>姓名</th>
+            <th>密码</th>
+        </tr>
+{#        快标签#}
+        {% for stu in stuList %}
+            <tr>
+{#            变量标签#}
+                <td>{{ stu.id }}</td>
+                <td>{{ stu.sname }}</td>
+                <td>{{ stu.spwd }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

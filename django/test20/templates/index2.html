@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/stu/login/" method="post">
+{#    1.解析隐藏域 #}
+{#    2.将随机字符串存放在request.MWTA['CSRF_COOLIE']#}
+{#      (csrfmiddlewaretoken)       #}
+    {% csrf_token %}
+    <input type="submit" value="login">
+
+</form>
+
+
+</body>
+</html>

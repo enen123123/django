@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+{#每次更换时，执行下一个函数以实现联动#}
+<select name="" id="province" onchange="loadcity()"></select>
+<select name="" id="city" onchange="loadtown()"></select>
+<select name="" id="town"></select>
+
+<script>
+{#    直接加载函数#}
+    $(function (){
+        loadprovince();
+    })
+    {#对应三级的函数#}
+    function loadprovince(){
+        loadarea(0,'province',loadcity);
+    }
+    function loadcity(){
+        loadarea($('#province').val(),'city',loadtown);
+    }
+    function loadtown(){
+        loadarea($('#city').val(),'town');
+    }
+
+    {#公共方法  获取id、下拉框、函数#}
+    function loadarea(pid,selectid,nextload){
+        {# 每次将对应下拉框清空内容 #}
+        $('#'+selectid).empty();
+        {#将数据库的数据返回#}
+        $.get('/stu/getinfo/',{'pid':pid},function (result){
+            console.log(result.jarealist)
+            {#转化为数组#}
+            var arealist=JSON.parse(result.jarealist);
+            for (var i=0;i<arealist.length;i++){
+                var area=arealist[i];
+                {#控制台查看列表#}
+                console.log(i);
+                console.log(area.pk);
+                console.log(area.fields.areaname);
+            {#  将获取的数据插入下拉框内  #}
+                $('#'+selectid).append('<option value="'+area.pk+'">'+area.fields.areaname+'</option>');
+
+            }
+            if(nextload!=null){
+                nextload()
+            }
+        })
+    }
+
+</script>
+
+</body>
+</html>

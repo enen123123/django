@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <form action="/toupload/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            姓名：<input type="text" name="sname">
+        </p>
+        <p>
+            文件：<input type="file" name="sfile">
+{#            enctype="multipart/form-data"     file必须要#}
+        </p>
+        <p>
+            &emsp;<input type="submit" value="提交">
+        </p>
+
+
+    </form>
+
+</body>
+</html>

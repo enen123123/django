@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+
+<input type="button" value="提交getAjax" onclick="getajaxhtml()">
+
+<input type="button" value="提交postAjax" onclick="postajaxhtml()">
+{% csrf_token %}
+<input type="button" value="提交customAjax" onclick="customajaxhtml()">
+
+<input type="button" value="test" onclick="test()">
+
+
+<script>
+
+    function test(){
+        alert('123456')
+    }
+
+{#    get的Ajax#}
+    function getajaxhtml(){
+        {#调用静态资源库#}
+{#        异步ajax#}
+        $.get('/stu/get/','uname=tom',function (result){
+            alert(result.flag);
+        })
+
+        alert('同步快于异步');
+    }
+{#    post的Ajax#}
+    function postajaxhtml(){
+        {#post值传递#}
+{#        {% csrf_token %}  外部也要写这个   #}
+        var csrf=$('input[name="csrfmiddlewaretoken"]').val()
+
+        $.post('/stu/post/', {'uname':'jary','csrfmiddlewaretoken':csrf},function (result){
+            alert(result.flag);
+        })
+    }
+    {#自定义Ajax,可get,可post#}
+    function customajaxhtml(){
+        {#post值传递#}
+        var csrf=$('input[name="csrfmiddlewaretoken"]').val()
+
+        $.ajax({
+            url:'/stu/post/',
+            data:{'uname':'timi','csrfmiddlewaretoken':csrf},
+            type:'POST',
+            {#异步（true）、同步#}
+            {#async:true,#}
+            {#同步需要先等待，异步可以先执行下一步，之后再回退执行#}
+            async:false,
+            success:function (result){
+                alert(result.flag);
+            }
+        })
+        alert('hello!!!')
+    }
+
+</script>
+
+
+</body>
+</html>

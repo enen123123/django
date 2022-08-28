@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ol>
+    <li>{{ uname }}</li>
+    <li>{{ uname.upper }}</li>
+
+    <li>{{ l.0 }}</li>
+    <li>{{ l.1 }}</li>
+
+    <li>{{ d.k1 }}</li>
+    <li>{{ d.k2 }}</li>
+
+    <li>{{ today.year }}-{{ today.month }}-{{ today.day }}</li>
+
+    <li>{{ str }}</li>
+{#取消自动解析#}
+    {% autoescape off %}
+        <li>{{ str }}</li>
+    {% endautoescape %}
+{# 单行注释 块标签#}
+{% comment %}
+    多行注释
+{% endcomment %}
+
+    <li></li>
+</ol>
+{#循环   reversed逆向 #}
+{% for li in l reversed%}
+{#    循环数据编号    recounter0逆序    判断第一，最后#}
+    {{ forloop.recounter0 }}--{{ li }}--{{ forloop.first }}--{{ forloop.last }}<br>
+{#    if判断  #}
+    {% if forloop.first %}
+        <h1>{{ li }}</h1>
+        {% else %}
+        <h3>{{ li }}</h3>
+    
+    {% endif %} 
+{% endfor %}
+{#字典循环#}
+{% for k,v in d.items %}
+    {{ k }}--{{ v }}<br>
+{% endfor %}
+
+
+
+</body>
+</html>

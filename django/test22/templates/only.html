@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .redspan{
+            color: red;
+        }
+        .greenspan{
+            color: green;
+        }
+    {#    用style容易被互相干扰，css('color','red')  ，直接用css更优#}
+    </style>
+
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+
+<input type="text" id="sname" onblur="checkuname(this.value)">
+<span id="spansname">提示</span>
+
+<input type="button" value="test" onclick="test()">
+
+
+<script>
+    function test(){
+        alert('123456')
+    }
+    function checkuname(thi){
+          {#由数字、26个英文字母或者下划线组成的字符串： #}
+{#        正则表达式需要格式 /正则内容/gi  #}
+        var reg=/^\w{3,10}$/gi
+        {#判断是否为空#}
+        if (thi.length==0){
+            $('#spansname').html('用户名不能为空！！！')
+            $('#spansname').css('color','red')
+        }
+
+        else if (reg.test(thi)){
+            $.get('/stu/getinfo/',{'sname':thi},function (result){
+                var flag=result.flag
+                if (flag){
+                    $('#spansname').html('该用户名已被注册！！！')
+                    $('#spansname').css('color','red')
+                }
+                else {
+                    $('#spansname').html('用户名不存在！！！')
+                    $('#spansname').css('color','green')
+                }
+            })
+        }
+
+        else{
+            $('#spansname').html('用户名长度不在3~8之间！！！')
+            $('#spansname').css('color','red')
+        }
+    }
+
+</script>
+
+
+
+
+</body>
+</html>

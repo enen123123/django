@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/student/addstu/" method="post">
+    {% csrf_token %}
+    <p>
+        姓名：<input type="text" name="sname">
+    </p>
+    <p>
+        班级：
+        <select name="cname" id="">
+            <option value="b101">b101</option>
+            <option value="b102">b102</option>
+            <option value="b103">b103</option>
+            <option value="b104">b104</option>
+
+        </select>
+    </p>
+    <p>
+        课程：<input type="checkbox" name="coursename" value="html">html
+        课程：<input type="checkbox" name="coursename" value="js">js
+        课程：<input type="checkbox" name="coursename" value="css">css
+        课程：<input type="checkbox" name="coursename" value="django">django
+
+    </p>
+    <p>
+        &emsp;&emsp;<input type="submit" value="提交">
+
+    </p>
+
+</form>
+
+</body>
+</html>

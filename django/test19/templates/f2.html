@@ -1,0 +1,27 @@
+{#加载自定义过滤器模块#}
+{% load  myfilter %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{{ str }}<br>
+{# markdown语法转换为html语法 #}
+{# md自定义的过滤器 #}
+{{ str|md }}<br>
+{# 识别html #}
+{{ str|md|safe }}<br>
+
+{{ str2 }}<br>
+{#截取前五位字符#}
+{{ str2|split1:'0,4' }}<br>
+
+{#自定义全局上下文#}
+<br>{{ uname }}<br>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/stu/form/" method="post">
+{#    为了显示表单项  引入模块loginfrom    #}
+{#    as_p 以<p></p>的形式 as_ul 以列表 #}
+    {{ loginfrom.as_p }}
+{#   自定义表单形式 #}
+{#    <p>#}
+{#        <label for="{{ loginfrom.username.id_for_label }}">{{ loginfrom.username.label }}:</label>{{ loginfrom.username }}#}
+{#    </p>#}
+{#    <p>#}
+{#        <label for="{{ loginfrom.password.id_for_label }}">{{ loginfrom.password.label }}:</label>{{ loginfrom.password }}#}
+{#    </p>#}
+    {% csrf_token %}
+    <input type="submit" value="提交">
+</form>
+
+</body>
+</html>

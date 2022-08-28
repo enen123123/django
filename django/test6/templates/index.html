@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+
+			#body,div{
+				width: 400px;
+
+				margin: 0px auto;
+
+
+
+			}
+
+			#div1{
+				border: 1px solid gray;
+				height: 60px;
+				line-height: 30px;
+			}
+			#div2{
+				border: 1px solid gray;
+
+
+			}
+
+            #div2 ul{
+                width: 200px;
+            }
+
+            .redA{
+                color: crimson;
+                background-color: aquamarine;
+                font-size: 25px;
+            }
+
+
+		</style>
+	</head>
+	<body id="body">
+		<div id="div1">
+			<ul>
+				<td>首页</td>
+				<td>电影</td>
+				<td>电视剧</td>
+				<td>动漫</td>
+			</ul>
+
+		</div>
+		<div id="div2">
+        <ul>
+            {% for mov in movielist %}
+{#                进行循环表单  表单中内容会由合并无法循环的情况#}
+                <li>
+                    <a href="{{ mov.download_url }}"><img src="{{ mov.image}}" width="100px"></a>
+                    <p>(点击图片获取下载链接)</p>
+                    <h3>{{ mov.name }}</h3>
+                    <span>{{ mov.account }}</span>
+
+                </li>
+            {% endfor %}
+        </ul>
+{#        <p>#}
+{#            <a href="/movie/?num={{ previous_page }}">上一页</a>#}
+{#            <a href="/movie/?num={{ next_page }}">下一页</a>#}
+{#        </p>#}
+
+            <p>
+                {% if movielist.has_previous %}
+                    <a href="/movie/?num={{ movielist.previous_page_number }}">上一页</a>
+                {% endif %}
+
+{#                遍历#}
+                {% for page in pagelist %}
+                    <a href="/movie/?num={{ page }}"
+                        {% if currentnum == page %}
+                            class="redA"
+                        {% endif %}
+                    >{{ page }} &nbsp</a>
+
+                {% endfor %}
+
+
+                {% if movielist.has_next %}
+                    <a href="/movie/?num={{ movielist.next_page_number}}">下一页</a>
+                {% endif %}
+            </p>
+		</div>
+	</body>
+</html>

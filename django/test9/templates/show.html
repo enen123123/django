@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table border="1" cellpadding="0" width="300px">
+    <tr>
+        <th>编号</th>
+        <th>班级名称</th>
+        <th>操作</th>
+    </tr>
+    {% for cls in clslist %}
+        <tr>
+            <th>{{ forloop.counter }}</th>
+{#forloop.counter   无论表中发生变化，都按照这个顺序  #}
+            <th>{{ cls.cname }}</th>
+            <th><a href="/student/detail/?cno={{ cls.cno }}">详情</a></th>
+        </tr>
+    {% endfor %}
+    
+
+</table>
+
+</body>
+</html>

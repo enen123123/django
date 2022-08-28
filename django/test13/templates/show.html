@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 100px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<table border="1" cellpadding="0" width="300px">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>头像</th>
+        <th>操作</th>
+    </tr>
+    {% for stu in students %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ stu.sname }}</td>
+            <td><img src="/media/{{ stu.sfile }}" ></td>
+            <td>
+                <a href="/watch/?sfile={{ stu.sfile }}">预览</a>
+                <a href="/down/?sfile={{ stu.sfile }}">下载</a>
+
+            </td>
+
+        </tr>
+    {% endfor %}
+
+
+</table>
+
+</body>
+</html>
